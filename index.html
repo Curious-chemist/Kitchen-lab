@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitchen Lab: Science Games for Kids</title>
+<style>
+:root{--ink:#2b1d4f;--grape:#7b4bd8;--mint:#2fbf8f;--cherry:#ef4b4b;--sky:#3b82f6;--card:#fffdf4;--gold:#ffd84d}
+*{box-sizing:border-box}
+html{background:#1b1147}
+body{margin:0;min-height:100vh;color:var(--ink);font:18px/1.4 "Chalkboard SE","Comic Sans MS","Trebuchet MS",sans-serif;text-align:center;
+background:radial-gradient(900px 500px at 15% -5%,#5b3fc9 0,transparent 60%),radial-gradient(800px 600px at 100% 100%,#0f8f9e 0,transparent 55%),linear-gradient(180deg,#2a1a6e,#1b1147 70%);background-attachment:fixed}
+.bubbles{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bubbles i{position:absolute;bottom:-90px;display:grid;place-items:center;border-radius:50%;font:700 1rem "Trebuchet MS",sans-serif;color:rgba(255,255,255,.75);font-style:normal;border:2px solid rgba(255,255,255,.35);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.35),rgba(255,255,255,.05));animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-120vh) translateX(30px)}}
+.wrap{position:relative;z-index:1;max-width:600px;margin:0 auto;padding:22px 14px 36px}
+.logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:6px}
+.logo b{font-size:2.6rem;filter:drop-shadow(0 4px 0 #14083a)}
+h1{font-size:2.6rem;margin:0;color:#fff;letter-spacing:1px;text-shadow:0 4px 0 #14083a,0 0 22px rgba(255,216,77,.45)}
+.sub{display:inline-block;margin:6px 0 18px;font-weight:700;color:#fff;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 16px}
+.foot{font-size:.85rem;margin-top:24px;color:#d9ccff}
+button{font:inherit;color:var(--ink);cursor:pointer}
+button:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+.bar{display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-bottom:12px;gap:8px;color:#fff}
+.sm{border:3px solid var(--ink);background:var(--card);border-radius:999px;padding:4px 12px;font-weight:700}
+.card{background:var(--card);border:4px solid var(--ink);border-radius:28px;padding:18px;box-shadow:0 7px 0 #0d0630,0 18px 30px rgba(0,0,0,.35)}
+.em{font-size:5rem;line-height:1.1;display:inline-block}
+.pop{animation:pop .35s}
+@keyframes pop{0%{transform:scale(.6) rotate(-10deg)}70%{transform:scale(1.15) rotate(4deg)}100%{transform:scale(1)}}
+.nm{font-size:1.6rem;font-weight:700;margin:4px 0 12px}
+.ch{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ch button,.o{border:4px solid var(--ink);border-radius:20px;padding:12px 4px;color:#fff;font-weight:700;box-shadow:0 5px 0 var(--ink)}
+.ch button:active,.o:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.a{background:var(--cherry)}.b{background:var(--sky)}.n{background:var(--mint)}
+.strip{height:24px;margin:14px auto 6px;width:80%;border:3px solid var(--ink);border-radius:8px;transition:background .5s}
+.say{min-height:4.4em;font-weight:700;margin:6px 0}
+#v>.say,#v>p.say{color:#fff}
+.nx{border:4px solid var(--ink);background:var(--grape);color:#fff;border-radius:999px;padding:10px 26px;font-weight:700;box-shadow:0 5px 0 var(--ink);margin:4px}
+.hub{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:420px){.hub{grid-template-columns:1fr}}
+.gc{border:4px solid var(--ink);border-radius:26px;padding:16px 8px;color:#fff;font-weight:700;box-shadow:0 7px 0 #0d0630,0 14px 24px rgba(0,0,0,.35);transition:transform .15s;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.gc:hover{transform:translateY(-4px) rotate(-1deg)}
+.gc:active{transform:translateY(3px)}
+.gc b{display:block;font-size:2.8rem;text-shadow:none}
+.gc small{display:block;font-weight:400;font-size:.85rem}
+.o{display:block;width:100%;margin:8px 0;background:var(--grape);font-size:1.2rem}
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mc{height:78px;border:4px solid var(--ink);border-radius:16px;background:linear-gradient(160deg,#9a6bff,#6a3fd0);color:#fff;font-size:1.05rem;font-weight:700;padding:2px;box-shadow:0 4px 0 #0d0630}
+.mc.up{background:#fff;color:var(--ink)}.mc.ok{background:var(--mint);color:#fff}
+.sw{width:100px;height:100px;border:4px solid var(--ink);border-radius:50%;display:inline-block;margin:4px 12px}
+.dr{width:70px;height:70px;border-radius:50%;border:4px solid var(--ink);color:#fff;font-weight:700;margin:4px;font-size:.9rem;text-shadow:0 0 3px #000}
+.ls{text-align:left}
+.ls h2{font-size:1.5rem;margin:0 0 6px;text-align:center}
+.ls .em{display:block;text-align:center;font-size:3.4rem}
+.ls ul{margin:6px 0 12px;padding-left:22px}.ls li{margin:6px 0}
+.ls .tip{background:#fff3b8;border:3px dashed var(--ink);border-radius:16px;padding:8px 12px;margin:10px 0;font-weight:700}
+.ls .go{text-align:center}
+.ph{height:22px;border:3px solid var(--ink);border-radius:8px;background:linear-gradient(90deg,#ef4b4b,#f59e0b 30%,#2fbf8f 50%,#3b82f6 75%,#7b4bd8);margin:8px 0 2px}
+.phl{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700}
+@media(max-width:420px){h1{font-size:2.1rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bubbles" id="bb" aria-hidden="true"></div>
+<div class="wrap">
+<div class="logo"><b>🧪</b><h1>Kitchen Lab</h1></div><br>
+<p class="sub" id="rank"></p>
+<div id="v"></div>
+<p class="foot">Science is fun! Never taste or mix real chemicals at home without an adult.</p>
+</div>
+<script>
+const $=s=>document.querySelector(s),V=$("#v");
+const save=(k,v)=>{try{localStorage.setItem("kl_"+k,v)}catch(e){}};
+const load=k=>{try{return +localStorage.getItem("kl_"+k)||0}catch(e){return 0}};
+const sh=a=>{a=a.slice();for(let k=a.length-1;k>0;k--){const j=Math.random()*(k+1)|0;[a[k],a[j]]=[a[j],a[k]]}return a};
+const rnd=n=>Math.random()*n|0;
+let stars=load("stars"),on=()=>{};
+V.onclick=e=>{const b=e.target.closest("[data-a]");if(b)on(b.dataset.a)};
+const addStars=n=>{stars+=n;save("stars",stars)};
+const bar=(l,s)=>`<div class="bar"><button class="sm" data-a="back">⬅ Menu</button><span>${l==null?"":"❤️".repeat(l)}</span><span>⭐ ${s}</span></div>`;
+
+const ITEMS=[
+["🍋","Lemon","acid","Lemons contain citric acid, so they taste sour."],
+["🍊","Orange juice","acid","Orange juice is a mild acid."],
+["🍅","Tomato","acid","Tomatoes are slightly acidic and taste a little tangy."],
+["🥛","Yogurt","acid","Yogurt contains lactic acid."],
+["🧴","Vinegar","acid","Vinegar contains acetic acid."],
+["🥒","Pickle","acid","Pickles are kept in acidic vinegar so they stay fresh."],
+["🍎","Apple","acid","Apples contain malic acid."],
+["🥤","Cola","acid","Cola is acidic because of added phosphoric acid."],
+["☕","Black coffee","acid","Coffee is a mild acid."],
+["🍍","Pineapple","acid","Pineapple is acidic, which can make your tongue tingle."],
+["🍓","Strawberry","acid","Strawberries are mildly acidic."],
+["🍇","Grapes","acid","Grapes contain tartaric acid."],
+["🌧️","Rain water","acid","Natural rain is slightly acidic because carbon dioxide dissolves in it."],
+["🥣","Buttermilk","acid","Buttermilk is slightly acidic, like yogurt."],
+["🧼","Soap","base","Soap is a base, which is why it feels slippery."],
+["🥄","Baking soda","base","Baking soda is a mild base. It can calm down extra acid."],
+["🪥","Toothpaste","base","Toothpaste is a mild base that helps fight acids in your mouth."],
+["🧽","Washing soda","base","Washing soda is a base that helps clean clothes."],
+["💊","Antacid tablet","base","Antacids are bases that calm a sour stomach."],
+["🧪","Bleach","base","Bleach is a strong base. Only adults should handle it."],
+["🪟","Window cleaner","base","Many window cleaners contain ammonia, which is a base."],
+["🌊","Sea water","base","Sea water is slightly basic."],
+["🥚","Egg white","base","Egg white is slightly basic."],
+["🧺","Laundry detergent","base","Detergents are bases that help lift dirt."],
+["🪣","Lime water","base","Lime water is made from calcium hydroxide, a base."],
+["💧","Pure water","neutral","Pure water is neither acid nor base. It is perfectly neutral!"],
+["🧂","Salt water","neutral","Table salt dissolved in water stays neutral."],
+["🍬","Sugar water","neutral","Sugar dissolved in water is neutral too."],
+["🚰","Tap water","neutral","Tap water is close to neutral."]
+];
+const EL=[["H","Hydrogen"],["He","Helium"],["Li","Lithium"],["C","Carbon"],["N","Nitrogen"],["O","Oxygen"],["F","Fluorine"],["Ne","Neon"],["Na","Sodium"],["Mg","Magnesium"],["Al","Aluminium"],["Si","Silicon"],["P","Phosphorus"],["S","Sulfur"],["Cl","Chlorine"],["K","Potassium"],["Ca","Calcium"],["Fe","Iron"],["Cu","Copper"],["Zn","Zinc"],["Ag","Silver"],["Sn","Tin"],["Au","Gold"],["Hg","Mercury"],["Pb","Lead"],["I","Iodine"],["Ar","Argon"]];
+const LAT={Na:"natrium",K:"kalium",Fe:"ferrum",Cu:"cuprum",Ag:"argentum",Au:"aurum",Hg:"hydrargyrum",Pb:"plumbum",Sn:"stannum"};
+const COL={acid:"linear-gradient(90deg,#ef4b4b,#f59e0b)",base:"linear-gradient(90deg,#3b82f6,#7b4bd8)",neutral:"#2fbf8f"};
+const WORD={acid:"an acid",base:"a base",neutral:"neutral"};
+
+function hub(){
+  const r=stars<20?"Lab Helper":stars<60?"Junior Scientist":stars<150?"Chemist":"Professor";
+  $("#rank").textContent="⭐ "+stars+" stars | Rank: "+r;
+  V.innerHTML=`<div class="hub">
+<button class="gc" style="background:linear-gradient(160deg,#ff6b6b,#d63a5a)" data-a="acid"><b>🍋</b>Acid or Base?<small>Best: ${load("acid")}</small></button>
+<button class="gc" style="background:linear-gradient(160deg,#4aa3ff,#2c5bd6)" data-a="sym"><b>⚛️</b>Element Quiz<small>Best: ${load("sym")}</small></button>
+<button class="gc" style="background:linear-gradient(160deg,#3fd9a6,#17936f)" data-a="mem"><b>🃏</b>Element Match<small>Best level: ${load("mem")}</small></button>
+<button class="gc" style="background:linear-gradient(160deg,#b27bff,#6a3fd0)" data-a="mix"><b>🎨</b>Potion Mixer<small>Best: ${load("mix")} / 15</small></button></div>`;
+  on=a=>lesson(a);
+}
+const LESSON={
+acid:{e:"🍋",t:"Acids, Bases and Neutral",h:`<p>Everything around us can be sorted into three groups. Read this first, then use it to answer!</p>
+<ul><li><b>Acids</b> taste <b>sour</b>, like lemon or vinegar. They turn blue litmus paper red.</li>
+<li><b>Bases</b> feel <b>slippery</b> and soapy, like soap or baking soda. They turn red litmus paper blue.</li>
+<li><b>Neutral</b> things are neither, like plain water.</li></ul>
+<p>Scientists measure this with the <b>pH scale</b>:</p>
+<div class="ph"></div><div class="phl"><span>0 Acid</span><span>7 Neutral</span><span>14 Base</span></div>
+<div class="tip">💡 Think: Is it sour or fizzy? Probably an acid. Is it used for cleaning or feels soapy? Probably a base. Is it just water-like? Neutral!</div>
+<p style="font-size:.85rem">Safety: never taste unknown things. Strong acids and bases can burn.</p>`},
+sym:{e:"⚛️",t:"What are Elements?",h:`<p>Everything is made of tiny building blocks called <b>elements</b>. Oxygen in the air, iron in a nail and gold in a ring are all elements. We know about 118 of them.</p>
+<ul><li>Each element has a short <b>symbol</b> of 1 or 2 letters. The first letter is big, the second is small, like <b>He</b>.</li>
+<li>Many symbols come from the English name: <b>H</b> is Hydrogen, <b>O</b> is Oxygen, <b>C</b> is Carbon.</li>
+<li>Some come from old <b>Latin</b> names: <b>Au</b> (aurum) is Gold, <b>Fe</b> (ferrum) is Iron, <b>Na</b> (natrium) is Sodium.</li></ul>
+<div class="tip">💡 Think: does the symbol look like the start of the name? If not, it may be a Latin name!</div>`},
+mem:{e:"🃏",t:"Symbols and Names",h:`<p>Every element has a <b>name</b> and a <b>symbol</b>, like Hydrogen and H. Chemists use symbols as a quick way to write elements.</p>
+<ul><li>Flip two cards. If one shows a symbol and the other shows its matching name, they stay open.</li>
+<li>Remember where each card is, so you need fewer moves.</li>
+<li>Fewer moves means more stars, and each level adds more cards.</li></ul>
+<div class="tip">💡 Think: Na goes with Sodium, and Fe goes with Iron. Try to remember them as pairs!</div>`},
+mix:{e:"🎨",t:"Mixing Colors",h:`<p>In a chemistry lab, a color change often shows that something has happened, like an indicator turning red in acid. Here you mix drops to make a new color.</p>
+<ul><li>🔴 Red + 🟡 Yellow = <b>Orange</b></li><li>🟡 Yellow + 🔵 Blue = <b>Green</b></li><li>🔴 Red + 🔵 Blue = <b>Purple</b></li>
+<li>💧 <b>Water</b> makes any color lighter.</li></ul>
+<div class="tip">💡 Think: look at the target. Is it orange? Then try red and yellow. Is it pale? Add some water. More drops of one color make it stronger.</div>`}};
+function lesson(k){
+  const L=LESSON[k];
+  V.innerHTML=bar(null,stars)+`<div class="card ls"><span class="em">${L.e}</span><h2>${L.t}</h2>${L.h}<div class="go"><button class="nx" data-a="go">Start the game ➜</button></div></div>`;
+  on=a=>a=="back"?hub():({acid,sym,mem,mix})[k]();
+}
+function over(key,s,again,label){
+  const prev=load(key);save(key,Math.max(prev,s));
+  V.innerHTML=`<div class="card"><div class="em pop">🏁</div><div class="nm">${label||"Score"}: ${s}</div><div class="say">${s>prev&&s>0?"New record! 🎉":"Best: "+prev+". Can you beat it?"}</div><button class="nx" data-a="again">Play again</button><button class="sm" data-a="back">Menu</button></div>`;
+  on=a=>a=="again"?again():hub();
+}
+
+function acid(){
+  let deck=[],s=0,l=3,it,lock;
+  const draw=(msg,col,nx)=>{V.innerHTML=bar(l,s)+`<div class="card"><div class="em pop">${it[0]}</div><div class="nm">${it[1]}</div><div class="ch"><button class="a" data-a="acid">🍋<br>Acid</button><button class="b" data-a="base">🧼<br>Base</button><button class="n" data-a="neutral">💧<br>Neutral</button></div><div class="strip" style="background:${col||"#f1e6c8"}"></div><div class="say">${msg}</div>${nx?'<button class="nx" data-a="nx">Next ➜</button>':""}</div>`};
+  const next=()=>{if(!deck.length)deck=sh(ITEMS);it=deck.pop();lock=0;draw("Acid, base, or neutral?")};
+  on=a=>{
+    if(a=="back")return hub();
+    if(a=="nx")return l?next():over("acid",s,acid);
+    if(lock)return;lock=1;
+    if(a==it[2]){s++;addStars(1);draw("🎉 Correct! "+it[1]+" is "+WORD[a]+". "+it[3],COL[a],1)}
+    else{l--;draw("Oops! "+it[1]+" is "+WORD[it[2]]+". "+it[3],COL[it[2]],1)}
+  };
+  next();
+}
+
+function sym(){
+  let s=0,l=3,q,lock;
+  const draw=(msg,nx)=>{
+    const e=q.e,t=q.f?`Which symbol means <b>${e[1]}</b>?`:`What is the name of <b>${e[0]}</b>?`;
+    V.innerHTML=bar(l,s)+`<div class="card"><div class="nm">${t}</div>${q.o.map((x,i)=>`<button class="o" data-a="${i}">${q.f?x[0]:x[1]}</button>`).join("")}<div class="say">${msg}</div>${nx?'<button class="nx" data-a="nx">Next ➜</button>':""}</div>`};
+  const next=()=>{const e=EL[rnd(EL.length)];q={e,f:Math.random()<.5,o:sh([e,...sh(EL.filter(x=>x!=e)).slice(0,3)])};lock=0;draw("Pick one!")};
+  on=a=>{
+    if(a=="back")return hub();
+    if(a=="nx")return l?next():over("sym",s,sym);
+    if(lock)return;lock=1;
+    const e=q.e,fact=LAT[e[0]]?` Its symbol comes from the Latin word "${LAT[e[0]]}".`:"";
+    if(q.o[+a]==e){s++;addStars(1);draw("🎉 Yes! "+e[0]+" is "+e[1]+"."+fact,1)}
+    else{l--;draw("Not quite. "+e[0]+" is "+e[1]+"."+fact,1)}
+  };
+  next();
+}
+
+function mem(){
+  let lvl=1;
+  const play=()=>{
+    const n=Math.min(3+lvl,9),els=sh(EL).slice(0,n);
+    const cards=sh(els.flatMap(e=>[{k:e[0],t:e[0]},{k:e[0],t:e[1]}]));
+    let open=[],done=0,moves=0,lock=0;
+    const render=(msg)=>{V.innerHTML=bar(null,stars)+`<p class="say" style="min-height:0">Level ${lvl}: match each symbol with its name. Moves: ${moves}</p><div class="mg">${cards.map((c,i)=>{const up=c.f||c.d;return `<button class="mc ${c.d?"ok":up?"up":""}" data-a="${i}">${up?c.t:"?"}</button>`}).join("")}</div>${msg||""}`};
+    on=a=>{
+      if(a=="back")return hub();
+      if(a=="up"){lvl++;return play()}
+      const c=cards[+a];if(lock||c.f||c.d)return;
+      c.f=1;open.push(c);render();
+      if(open.length==2){
+        moves++;lock=1;
+        setTimeout(()=>{
+          const[x,y]=open;if(x.k==y.k){x.d=y.d=1;done++}
+          x.f=y.f=0;open=[];lock=0;
+          if(done==n){const st=moves<=n+2?3:moves<=n*2?2:1;addStars(st);save("mem",Math.max(load("mem"),lvl));
+            render(`<div class="say">🎉 Level ${lvl} done in ${moves} moves! +${st} ⭐</div><button class="nx" data-a="up">Next level ➜</button>`)}
+          else render();
+        },700);
+      }
+    };
+    render();
+  };
+  play();
+}
+
+const DR={R:[230,40,50],Y:[250,215,40],B:[40,90,230],W:[255,255,255]},DN={R:"Red",Y:"Yellow",B:"Blue",W:"Water"};
+const mixc=c=>{let t=0,x=[0,0,0];for(const k in c){t+=c[k];for(let i=0;i<3;i++)x[i]+=DR[k][i]*c[k]}return t?x.map(v=>Math.round(v/t)):[235,235,225]};
+function mix(){
+  let r=0,sc=0,t,tc,m;
+  const draw=(msg,fin)=>{V.innerHTML=bar(null,sc)+`<div class="card"><div class="nm">Round ${r} / 5: match the color!</div><div><span class="sw" style="background:rgb(${tc})"></span><span class="sw" style="background:rgb(${mixc(m)})"></span></div><div>Target &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Your potion</div><div style="margin:10px 0">${["R","Y","B","W"].map(k=>`<button class="dr" style="background:rgb(${k=="W"?"150,170,190":DR[k]})" data-a="${k}">${DN[k]}<br>${m[k]}</button>`).join("")}</div><div class="say">${msg}</div>${fin?'<button class="nx" data-a="nx">'+(r<5?"Next round ➜":"Finish")+'</button>':'<button class="sm" data-a="rs">Reset</button> <button class="nx" data-a="ck">Check ✔</button>'}</div>`};
+  const round=()=>{r++;t={};sh(["R","Y","B"]).slice(0,2+rnd(2)).forEach(k=>t[k]=1+rnd(3));if(Math.random()<.4)t.W=1+rnd(2);tc=mixc(t);m={R:0,Y:0,B:0,W:0};draw("Tap the drops to mix. Red + Yellow makes orange. Try it!")};
+  on=a=>{
+    if(a=="back")return hub();
+    if(a=="nx")return r<5?round():over("mix",sc,mix,"Stars");
+    if(a=="rs"){m={R:0,Y:0,B:0,W:0};return draw("Fresh start!")}
+    if(a=="ck"){
+      const c=mixc(m),d=Math.hypot(c[0]-tc[0],c[1]-tc[1],c[2]-tc[2]),st=d<25?3:d<50?2:d<90?1:0;
+      sc+=st;addStars(st);
+      return draw(st==3?"🎉 Perfect match! +3 ⭐":st?`Nice! +${st} ⭐`:"Not close this time. Try mixing different drops!",1);
+    }
+    m[a]++;draw("Tap more drops or press Check.");
+  };
+  round();
+}
+(function(){const sy=["H","O","Fe","Au","Na","Cl","C","He","Ag","N","","","","","",""];let h="";
+sy.forEach((t,i)=>{const z=26+rnd(46);h+=`<i style="left:${(i*6.3+rnd(4))%96}%;width:${z}px;height:${z}px;animation-duration:${14+rnd(16)}s;animation-delay:-${rnd(24)}s">${t}</i>`});
+$("#bb").innerHTML=h})();
+hub();
+</script>
+</body>
+</html>
