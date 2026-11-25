@@ -2,7 +2,7 @@
 
 A playful chemistry website where kids learn by playing. Every game starts with a short lesson, so students can read, think, and then answer. Kids collect stars, climb ranks, and the site remembers their best scores.
 
-**Play it live:** https://YOUR-USERNAME.github.io/kitchen-lab/
+**Play it live:** https://curious-chemist.github.io/Kitchen-lab/
 
 ## Games
 
@@ -25,16 +25,16 @@ Open `index.html` in any web browser. Nothing to install and no internet needed.
 
 ## Project structure
 ```
-kitchen-lab/
+Kitchen-lab/
 ├── index.html   (the whole website: HTML, CSS and JavaScript)
 └── README.md    (this file)
 ```
 
 ## Publish it with GitHub Pages
-1. Create a public repository named `kitchen-lab`.
+1. Create a public repository named `Kitchen-lab`.
 2. Upload `index.html` and `README.md`.
 3. Go to **Settings → Pages**, choose Branch `main` and folder `/ (root)`, then click **Save**.
-4. After a minute or two, your site is live at `https://YOUR-USERNAME.github.io/kitchen-lab/`.
+4. After a minute or two, your site is live at `https://curious-chemist.github.io/Kitchen-lab/`.
 
 ## Built with
 Plain HTML, CSS and JavaScript. No libraries or frameworks.
@@ -49,4 +49,4 @@ Science is fun, but never taste or mix real chemicals at home without an adult. 
 - More items and elements
 
 ## Author
-Made by YOUR-NAME. Replace `YOUR-USERNAME` and `YOUR-NAME` before publishing.
+Made by ANSHU.
